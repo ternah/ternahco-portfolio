@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternahco - Artisan du Futur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cadre">
+    <div class="logo"></div>
+    <h1><span class="tern">TERN</span><span class="ahco">AHCO</span></h1>
+    
+    <div class="burger-menu" id="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="menu" id="nav-menu">
+        <a href="#mes-creations">Mes creations</a>
+        <a href="#astuces">Les astuces</a>
+        <a href="#cours">Mes cours</a>
+        <a href="#a-propos">A propos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-left">
+                <h2><span class="artisan">ARTISAN</span><br><span class="futur">DU FUTUR</span></h2>
+                <p>Je conçois des expériences numériques mêlant design, code et intelligence artificielle.</p>
+            </div>
+            <div class="hero-right">
+                <img src="image-site/1.png" alt="illustration futuriste">
+            </div>
+        </section>
+
+        <!-- MES CREATIONS -->
+        <section id="mes-creations" class="creations">
+            <h3>Mes Créations</h3>
+            <ul class="main-filter">
+                <li class="btn-main active" data-target="images">Images</li>
+                <li class="btn-main" data-target="python">Python</li>
+                <li class="btn-main" data-target="ai">AI</li>
+            </ul>
+
+            <div class="container-categories">
+                <div class="category-group active" id="images">
+                    <div class="cards" id="grid-images"></div>
+                </div>
+                <div class="category-group" id="python">
+                    <div class="cards" id="grid-python"></div>
+                </div>
+                <div class="category-group" id="ai">
+                    <div class="sub-container" id="grid-ai"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASTUCES -->
+        <section id="astuces" class="astuces-section">
+            <h3 class="glow-text">Les Astuces du Futur</h3>
+            <div class="carousel-container">
+                <button class="prev-btn">❮</button>
+                <div class="carousel-track" id="astuces-track"></div>
+                <button class="next-btn">❯</button>
+            </div>
+        </section>
+
+        <!-- COURS -->
+        <section id="cours" class="cours-section">
+            <h3 class="glow-text">Mes Cours PDF</h3>
+            <div class="cours-grid" id="grid-cours"></div>
+        </section>
+
+        <!-- A PROPOS -->
+        <section id="a-propos" class="about-section">
+            <div class="about-container">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="image-site/02.jpg" alt="Ternah">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3 class="glow-text">À propos de moi</h3>
+                    <p>Je suis Ternah, un créateur multidisciplinaire.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Design</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">AI Prompting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT -->
+    <footer id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>📧 ternah@votremail.com</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Nom" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit" class="submit-btn">Envoyer</button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TERNAHCO - L'Artisan du Futur.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+html{
+  scroll-behavior: smooth;
+}
+/* 1. RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #004d4d; /* Un teal plus profond pour le futurisme */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 2. HEADER (Navigation) */
+.cadre {
+    background-color: rgba(255, 255, 255, 0.95); /* Légère transparence */
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5%;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+.glow-text {
+  text-shadow: 0 0 10px rgba(46, 139, 87, 0.7), 0 0 20px rgba(46, 139, 87, 0.4);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: coral;
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin-left: 15px;
+    
+}
+
+.tern { color: seagreen; }
+.ahco { color: tomato; }
+
+.menu {
+    display: flex;
+    gap: 25px;
+    margin-left: auto;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #1a1a1a;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Effet de soulignement au survol */
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;      
+    width: 0%;
+    height: 2px;       
+    background-color: tomato; 
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.pdf-preview {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.pdf-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.mini-carousel { position: relative; width: 100%; overflow: hidden; border-radius: 10px; margin-top: 10px; }
+.mini-track { display: flex; overflow: hidden; }
+.mini-page { min-width: 100%; text-align: center; }
+.mini-page img { width: 100%; height: 300px; object-fit: cover; }
+.mini-page span { font-size: 18px; color: seagreen; display: block; margin-top: 4px; }
+.mini-nav { position: absolute; top: 40%; width: 100%; display: flex; justify-content: space-between; pointer-events: none; }
+.mini-nav button { pointer-events: all; background: rgba(0,0,0,0.5); color: white; border: none; cursor: pointer; padding: 5px; border-radius: 50%; }
+/* --- MENU BURGER STYLES --- */
+.burger-menu {
+    display: none; /* Caché sur ordinateur */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 3px;
+    background-color: seagreen;
+    transition: 0.3s;
+}
+
+
+@media (max-width: 1024px) {
+    .burger-menu {
+        display: flex; /* Apparaît sur mobile */
+    }
+
+    .menu {
+        display: none; /* Cache le menu par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    /* --- AJUSTEMENT HOVER TABLETTE/MOBILE --- */
+
+@media (max-width: 1024px) {
+    .menu a {
+        display: inline-block; /* Force le lien à épouser la largeur du texte */
+        width: max-content;    /* Empêche l'étirement sur toute la ligne */
+        margin: 0 auto;        /* Centre le lien si le menu est en colonne */
+        padding: 10px 0;       /* Donne un peu d'espace pour cliquer */
+    }
+
+    /* Optionnel : tu peux aussi réduire la taille du trait sur tablette */
+    .menu a::after {
+        height: 2px;
+        bottom: 5px; /* Remonte un peu le trait pour qu'il soit plus proche du texte */
+    }
+}
+
+    .menu.active {
+        display: flex; /* S'affiche quand on clique */
+    }
+}
+/* 3. HERO SECTION */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 8% 60px 8%; /* Padding haut pour compenser le header fixed */
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Design moderne en biais */
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.artisan {
+    color: #1a1a1a;
+    font-size: clamp(40px, 8vw, 100px); /* Taille fluide selon l'écran */
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.futur {
+    color: seagreen;
+    font-size: clamp(35px, 7vw, 90px);
+    font-weight: 900;
+}
+
+.hero-left p {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 550px;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 30px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* 4. CREATIONS SECTION */
+.creations {
+    padding: 80px 5%;
+    background-color: #004d4d; /* On revient sur le fond teal */
+    color: white;
+}
+
+.creations h3 {
+    text-align: center;
+    font-size: clamp(30px, 5vw, 60px);
+    margin-bottom: 40px;
+}
+/* --- FILTRES (Menus) --- */
+.main-filter, .sub-filter {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-main {
+    padding: 12px 30px;
+    background:seagreen;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-main.active {
+    background: seagreen;
+    color: white;
+}
+
+.btn-sub {
+    padding: 8px 20px;
+    border: 2px solid tomato;
+    color: tomato;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-sub.active {
+    background: tomato;
+    color: white;
+}
+
+/* --- AFFICHAGE DYNAMIQUE --- */
+.category-group, .sub-content {
+    display: none; /* Cache tout par défaut */
+}
+
+.category-group.active, .sub-content.active {
+    display: block; /* Affiche l'élément actif */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* --- GRILLES ET CARTES --- */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Style Carte Prompt */
+.prompt-card {
+    background: #1a1a1a;
+    color: #00ffcc;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 6px solid tomato;
+    font-family: 'Courier New', monospace;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+/* SECTION GLOBALE */
+.astuces-section {
+  padding: 60px 20px;
+  background: #f5f5f5;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* TITRE */
+.astuces-section h3.glow-text {
+  font-size: 36px;
+  font-weight: bold;
+  color: seagreen;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* CAROUSEL CONTAINER */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BOUTONS PREV / NEXT */
+.prev-btn,
+.next-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: seagreen;
+  color: white;
+}
+
+/* TRACK CAROUSEL */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+/* ENLEVER LES SCROLLBAR SUR LES NAVIGATEURS MODERNES */
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.carousel-track {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* CARTES ASTUCES */
+.astuce-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  min-width: 250px;
+  max-width: 300px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* HOVER SUR LES CARTES */
+.astuce-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ICON */
+.astuce-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* TITRE CARTE */
+.astuce-card h4 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* TEXTE CARTE */
+.astuce-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* IMAGE DANS LA CARTE */
+.astuce-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+/* ANIMATION (déjà présent animate-up) */
+.animate-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.6s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.cours-section {
+    padding: 100px 5%;
+    background-color: #004d4d; /* On reste sur ton Teal fétiche */
+    color: white;
+    text-align: center;
+    scroll-margin-top: 80px;
+}
+
+.subtitle {
+    margin-bottom: 50px;
+    opacity: 0.8;
+}
+
+.cours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.cours-card {
+    background: rgba(255, 255, 255, 0.1); /* Effet de verre (Glassmorphism) */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 20px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.cours-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.pdf-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.cours-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.cours-card p {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    min-height: 50px;
+}
+
+/* Le bouton de téléchargement style "Futur" */
+.download-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: coral;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background-color: tomato;
+    box-shadow: 0 0 15px rgba(255, 99, 71, 0.5);
+}
+
+.about-section {
+    padding: 120px 8%;
+    background-color: #f4f4f4; /* Fond clair pour reposer les yeux */
+    color: #333;
+    scroll-margin-top: 80px;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image-frame {
+    position: relative;
+    border: 5px solid seagreen;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.image-frame img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Petit effet décoratif derrière l'image */
+.image-frame::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid tomato;
+    border-radius: 30px;
+    z-index: -1;
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text h3 {
+    font-size: 2.5rem;
+    color: #004d4d;
+    margin-bottom: 20px;
+}
+
+.about-text h4 {
+    color: seagreen;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* Badges de compétences */
+.skills {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: #004d4d;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+
+.contact-section {
+    padding: 100px 8% 20px 8%;
+    background-color: #002b2b; /* Un teal encore plus sombre pour le footer */
+    color: white;
+    scroll-margin-top: 80px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-details {
+    margin: 30px 0;
+}
+
+.contact-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background: seagreen;
+    border-color: seagreen;
+}
+
+/* Le Formulaire */
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: tomato;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.submit-btn {
+    padding: 15px;
+    background: tomato;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: coral;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* LIGHTBOX pour images */
+#lightbox {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 2000;
+}
+
+#lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* --- DESIGN RESPONSIVE GLOBAL --- */
+
+@media (max-width: 1024px) {
+    .hero {
+        padding: 120px 5% 60px 5%; /* Ajuste l'espace pour tablettes */
+    }
+    .artisan { font-size: 70px; }
+    .futur { font-size: 60px; }
+}
+
+@media (max-width: 768px) {
+    /* Cache le menu texte pour laisser place à un futur bouton burger */
+    .menu {
+        display: none; 
+    }
+
+    /* Hero en colonne */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 140px;
+        clip-path: none; /* Simplifie la forme sur mobile */
+    }
+    
+    .hero-right img {
+        max-width: 280px;
+        margin-top: 30px;
+    }
+
+    /* Grilles dynamiques (Créations & Cours) */
+    .cards, .cours-grid {
+        grid-template-columns: 1fr; /* Une seule colonne pour la lisibilité */
+        gap: 20px;
+    }
+
+    /* Ajustement des cartes d'images générées par JS */
+    .card img {
+        height: 400px; /* Réduit la hauteur sur mobile pour éviter de trop scroller */
+    }
+
+    /* Section À Propos */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .image-frame img {
+        max-width: 280px;
+    }
+
+    /* Section Contact */
+    .contact-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* --- AJUSTEMENT LIGHTBOX POUR MOBILE --- */
+#lightbox img {
+    max-width: 95%; /* Plus large sur petit écran */
+    max-height: 80%;
+}
+
+
+
+
+

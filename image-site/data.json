@@ -1,0 +1,38 @@
+{
+  "images": [
+    { "src": "image-site/1.jpg", "title": "Paysage Futuriste", "desc": "Une vue de ville futuriste en digital art." },
+    { "src": "image-site/2.jpg", "title": "Interface UI", "desc": "Prototype d’interface utilisateur moderne." },
+    { "src": "image-site/3.png", "title": "Illustration 3D", "desc": "Rendu 3D d’un objet futuriste." },
+    { "src": "image-site/4.png", "title": "Concept Art", "desc": "Design conceptuel d’un robot intelligent." },
+    { "src": "image-site/5.png", "title": "Vitrine Digitale", "desc": "Projet d’une vitrine interactive." }
+  ],
+  "python": [
+    { "src": "pdfs/python1.png", "title": "Clean Code", "desc": "Bonnes pratiques Python pour des scripts lisibles." },
+    { "src": "pdfs/python2.png", "title": "Mini Projet", "desc": "Exemple de projet Python complet." },
+    { "src": "pdfs/python3.png", "title": "Automatisation", "desc": "Scripts pour automatiser vos tâches quotidiennes." }
+  ],
+  "ai": [
+    { "type": "image", "src": "image-site/ai1.png", "title": "Illustration IA" },
+    { "type": "prompt", "title": "Logo Startup", "desc": "Créer un logo minimaliste et futuriste pour une startup tech." },
+    { "type": "prompt", "title": "Slogan Impactant", "desc": "Rédiger un slogan accrocheur pour un projet digital." }
+  ],
+  "astuces": [
+    { 
+      "icon": "💡", 
+      "title": "Carousels", 
+      "desc": "Utilisez des contrastes élevés pour un effet futuriste.", 
+      "pages": [
+        { "img": "image-site/astuce1.png", "text": "Étape 1 : comment le prix change?" },
+        { "img": "image-site/astuce3.png", "text": "Étape 2 : Couleurs" },
+        { "img": "image-site/astuce4.png", "text": "Étape 3 : Rendu final" }
+      ]
+    },
+    { "icon": "🐍", "title": "Design AI", "desc": "Préférez les list comprehensions pour un code plus lisible.", "img": "image-site/4.png" },
+    { "icon": "🚀", "title": "Python astuce", "desc": "Compressez vos images en WebP pour un chargement instantané.", "img": "image-site/astuce2.png" }
+  ],
+  "cours": [
+    { "title": "Python Débutant", "desc": "Introduction aux bases de Python.", "pdf": "docs/guide flyers.pdf" },
+    { "title": "Python Avancé", "desc": "Techniques avancées et bonnes pratiques.", "pdf": "pdfs/python_avance.pdf" },
+    { "title": "IA pour Designers", "desc": "Comment intégrer l’IA dans vos créations.", "pdf": "pdfs/ia_designers.pdf" }
+  ]
+}
